@@ -1,7 +1,10 @@
-def canCompleteCircuit(self , gas:List[int ], cost: List[int]):
-   n=gas.size()
-    total_gas= 0, total_cost= 0
-    cur_gas= 0, res=0
-
-    for i in :
-
+    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
+        n, total_surplus, surplus, start = len(gas), 0, 0, 0
+        
+        for i in range(n):
+            total_surplus += gas[i] - cost[i]
+            surplus += gas[i] - cost[i]
+            if surplus < 0:
+                surplus = 0
+                start = i + 1
+        return -1 if (total_surplus < 0) else start
